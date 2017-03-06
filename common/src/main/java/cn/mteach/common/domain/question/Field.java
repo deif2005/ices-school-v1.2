@@ -1,0 +1,61 @@
+package cn.mteach.common.domain.question;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Field {
+
+	private int fieldId;
+	private String fieldName;
+	private String englishName;
+	private String memo;
+	private boolean state;
+	private boolean removeable;
+	private String keyId;
+	public boolean isRemoveable() {
+		return removeable;
+	}
+	public void setRemoveable(boolean removeable) {
+		this.removeable = removeable;
+	}
+	public int getFieldId() {
+		return fieldId;
+	}
+	public void setFieldId(int fieldId) {
+		this.fieldId = fieldId;
+	}
+	public String getFieldName() {
+		return fieldName;
+	}
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
+	}
+	public String getMemo() {
+		return memo;
+	}
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+	public boolean isState() {
+		return state;
+	}
+	public void setState(boolean state) {
+		this.state = state;
+	}
+
+	public String getEnglishName() {
+		return englishName;
+	}
+
+	public void setEnglishName(String englishName) {
+		this.englishName = englishName;
+	}
+
+	public String getKeyId() {
+		return keyId;
+	}
+
+	public void setKeyId(String keyId) {
+		this.keyId = keyId;
+	}
+}

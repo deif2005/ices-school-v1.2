@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.mteach.management.persistence.JyeooMapper">
+
+   <select id="searchGradeByName" parameterType="string" resultType="cn.mteach.common.domain.jyeoo.Grade">
+       select grade_id gradeId,grade_name gradeName,state,key_id keyId from et_grade where grade_name=#{gradeName}
+   </select>
+
+    <insert id="addGrade" parameterType="cn.mteach.common.domain.jyeoo.Grade" useGeneratedKeys="true" keyProperty="gradeId">
+        insert into et_grade (grade_name,state,key_id) value (#{gradeName},#{state},#{keyId})
+    </insert>
+
+    <select id="searchVersionByName"  resultType="cn.mteach.common.domain.jyeoo.Version">
+        select  version_id versionId,version_name versionName,state,subject_name subjectName,key_id keyId from et_version where version_name=#{versionName} and subject_name=#{subjectName}
+    </select>
+
+    <insert id="addVersion" parameterType="cn.mteach.common.domain.jyeoo.Version" useGeneratedKeys="true" keyProperty="versionId">
+        insert into et_version (version_name,subject_name,state,key_id) value (#{versionName},#{subjectName},#{state},#{keyId})
+    </insert>
+
+    <select id="getSourceBySubject"  resultType="cn.mteach.common.domain.question.Reference" parameterType="string">
+        select reference_id referenceId,reference_name referenceName,memo,state,subject_name subjectName,key_id keyId from et_reference where memo=#{subjectName}
+    </select>
+
+    <select id="getVersionBySubject"  resultType="cn.mteach.common.domain.jyeoo.Version" parameterType="string">
+        select version_id versionId,version_name versionName,state,subject_name subjectName,key_id keyId from et_version where subject_name=#{subjectName}
+    </select>
+
+    <select id="getQuestionLevel" resultType="cn.mteach.common.domain.jyeoo.QuestionLevel">
+        select * from et_question_level
+    </select>
+
+    <select id="getQuestionSort" resultType="cn.mteach.common.domain.jyeoo.QuestionSort">
+        select * from et_question_sort
+    </select>
+
+    <select id="getFieldByKeyId" parameterType="int" resultType="cn.mteach.common.domain.question.Field">
+        select * from et_field where key_id=#{keyId}
+    </select>
+
+    <insert id="addJyPaper" parameterType="cn.mteach.common.domain.jyeoo.JyPaper">
+      replace into et_jypaper (id,title,description,questionXml,score,view_count,down_count,subject,creator_id,creator_date,state)
+      values (#{id},#{title},#{description},#{questionXml},#{score},#{viewCount},#{downCount},#{subject},#{creatorId},#{creatorDate},#{state})
+    </insert>
+
+</mapper>
