@@ -1,7 +1,8 @@
 package cn.mteach.common;
 
 public class Constants {
-	
+	//defi 2017-03-06_git
+
 	public final static String ANSWERSHEET_DATA_QUEUE = "examplus.answersheetToScoreMaker";
 	public final static String CONFIG_PATH = "/opt/scoremarker";
 
